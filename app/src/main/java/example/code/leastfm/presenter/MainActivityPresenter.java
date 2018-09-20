@@ -1,14 +1,18 @@
 package example.code.leastfm.presenter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+
 
 import example.code.leastfm.model.ApiClient;
 import example.code.leastfm.model.ApiService;
-import example.code.leastfm.model.apipojos.Results;
+import example.code.leastfm.model.apipojos.Model;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+i
 
 
 public class MainActivityPresenter implements MainActivityContract.Presenter{
@@ -25,88 +29,27 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
         view.setPresenter(this);
     }
 
-    public void getWifies()
-    {
 
+
+    public void loadAlbums(@NonNull String albumsToLoad)
+    {
+        final String method = "album.search";
+        final String apiKey = "06bcf45620e992c76e5c35d87b5e7260";
+        final String format = "json";
         apiService= ApiClient.getClient(context).create(ApiService.class);
         compositeDisposable.add(
 
-                   apiService.getAllWifies()
+
+                apiService.findAlbum(method, albumsToLoad, apiKey, format)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<Results>()
+                        .subscribeWith(new DisposableSingleObserver<Model>()
 
                                        {
 
                                            @Override
-                                           public void onSuccess(Results results) {
-                                           view.setResults(results);
-
-
-
-                                           }
-
-                                           @Override
-                                           public void onError(Throwable e) {
-                                               view.setErrorMessage(e.getMessage());
-                                           }
-                                       }
-                        )
-
-
-
-        );
-    }
-public void deleteWifi(String s)
-{
-    apiService= ApiClient.getClient(context).create(ApiService.class);
-    compositeDisposable.add(
-
-            apiService.deleteWifi(s)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<Reply>()
-
-                                   {
-
-                                       @Override
-                                       public void onSuccess(Reply reply) {
-                                           view.setResults(reply);
-
-
-
-
-                                       }
-
-                                       @Override
-                                       public void onError(Throwable e) {
-                                           view.setErrorMessage(e.getMessage());
-                                       }
-                                   }
-                    )
-
-
-
-    );
-}
-
-    public void getWifies(String d)
-    {
-
-        apiService= ApiClient.getClient(context).create(ApiService.class);
-        compositeDisposable.add(
-
-                apiService.getWifi(d)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<Wifi>()
-
-                                       {
-
-                                           @Override
-                                           public void onSuccess(Wifi wifi) {
-                                               view.setResults(wifi);
-
+                                           public void onSuccess(Model model) {
+                                           view.setResults(model);
 
 
                                            }
@@ -124,39 +67,6 @@ public void deleteWifi(String s)
     }
 
 
-    public void addWifi(Wifi wifi)
-    {
-
-        apiService= ApiClient.getClient(context).create(ApiService.class);
-        compositeDisposable.add(
-
-                apiService.addWifi(wifi)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<Reply>()
-
-                                       {
-
-                                           @Override
-                                           public void onSuccess(Reply reply) {
-                                               view.setResults(reply);
-
-
-
-
-                                           }
-
-                                           @Override
-                                           public void onError(Throwable e) {
-                                               view.setErrorMessage(e.getMessage());
-                                           }
-                                       }
-                        )
-
-
-
-        );
-    }
 
 
     @Override

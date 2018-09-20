@@ -1,23 +1,52 @@
 package example.code.leastfm.model.apipojos;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import example.code.leastfm.model.AlbumMatches;
 
 public class Results {
 
-    @SerializedName("data")
-    @Expose
-    private List<Wifi> data = null;
+    @SerializedName("opensearch:totalResults")
+    private String opensearchTotalResults;
 
-    public List<Wifi> getData() {
-        return data;
+    @SerializedName("opensearch:startIndex")
+    private String opensearchStartIndex;
+
+    @SerializedName("opensearch:itemsPerPage")
+    private String opensearchItemsPerPage;
+
+    private AlbumMatches albummatches;
+
+    public String getOpensearchTotalResults() {
+        return opensearchTotalResults;
     }
 
-    public void setData(List<Wifi> data) {
-        this.data = data;
+    public void setOpensearchTotalResults(String opensearchTotalResults) {
+        this.opensearchTotalResults = opensearchTotalResults;
     }
 
+    public String getOpensearchStartIndex() {
+        return opensearchStartIndex;
+    }
+
+    public void setOpensearchStartIndex(String opensearchStartIndex) {
+        this.opensearchStartIndex = opensearchStartIndex;
+    }
+
+    public String getOpensearchItemsPerPage() {
+        return opensearchItemsPerPage;
+    }
+
+    public void setOpensearchItemsPerPage(String opensearchItemsPerPage) {
+        this.opensearchItemsPerPage = opensearchItemsPerPage;
+    }
+
+    public AlbumMatches getAlbummatches() {
+        return albummatches;
+    }
+
+    public void setAlbummatches(AlbumMatches albumMatches) {
+        this.albummatches = albumMatches;
+    }
 
 }

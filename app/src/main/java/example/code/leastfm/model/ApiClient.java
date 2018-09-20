@@ -10,8 +10,8 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import example.code.mvpexample.Const;
-import example.code.mvpexample.Utils.PrefUtils;
+import example.code.leastfm.Const;
+import example.code.leastfm.Utils.PrefUtils;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

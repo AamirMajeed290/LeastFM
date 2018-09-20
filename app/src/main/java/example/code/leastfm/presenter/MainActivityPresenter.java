@@ -4,9 +4,14 @@ import android.content.Context;
 
 import example.code.leastfm.model.ApiClient;
 import example.code.leastfm.model.ApiService;
+import example.code.leastfm.model.apipojos.Results;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 
-public class MainActivityPresenter implements MainActivityContract.Presenter {
+public class MainActivityPresenter implements MainActivityContract.Presenter{
 
     CompositeDisposable compositeDisposable=new CompositeDisposable();
     private ApiService apiService;

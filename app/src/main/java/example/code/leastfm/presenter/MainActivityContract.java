@@ -3,18 +3,15 @@ package example.code.leastfm.presenter;
 
 import example.code.leastfm.BasePresenter;
 import example.code.leastfm.BaseView;
-import example.code.leastfm.model.Reply;
-import example.code.leastfm.model.apipojos.Results;
-import example.code.leastfm.model.apipojos.Wifi;
 
 public interface MainActivityContract {
 
     interface Presenter extends BasePresenter {
        //void onDestry();  // we can write this method here id we dont want to extend BasePresenter calss
-        void getWifies(String d);
+      /*  void getWifies(String d);
         void getWifies();
         void addWifi(Wifi wifi);
-        void deleteWifi(String s);
+        void deleteWifi(String s);*/
 
 
 
@@ -25,13 +22,13 @@ public interface MainActivityContract {
     interface view extends BaseView<Presenter>
     {
 
-        void setResults(Wifi wifi);
+        /*void setResults(Wifi wifi);
         void setResults(Reply reply);
         void setResults(Results results);
         void setErrorMessage(String error);
 
 
-
+*/
 
     }
 
